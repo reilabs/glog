@@ -484,9 +484,12 @@ static inline bool MungeAndDiffTestStderr(const string& golden_filename) {
     string munged_captured = cap->filename() + ".munged";
     WriteToFile(captured, munged_captured);
     string diffcmd("diff -u " + munged_golden + " " + munged_captured);
-    if (system(diffcmd.c_str()) != 0) {
-      fprintf(stderr, "diff command was failed.\n");
-    }
+
+    fprintf(stderr, "diff command has been disabled in this glog fork.\n");
+  
+    // if (system(diffcmd.c_str()) != 0) {
+    //   fprintf(stderr, "diff command was failed.\n");
+    // }
     unlink(munged_golden.c_str());
     unlink(munged_captured.c_str());
     return false;
